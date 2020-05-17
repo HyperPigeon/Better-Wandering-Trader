@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.hyper_pigeon.better_wandering_trader.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "TraderOffersMixin"
+  ],
+  "client": [
+    "BetterWanderingTraderMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

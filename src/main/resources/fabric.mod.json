@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "better_wandering_trader",
+  "version": "${version}",
+
+  "name": "Better Wandering Trader",
+  "description": "A mod that that gives the Wandering Trader more useful trades",
+  "authors": [
+    "Hyper_Pigeon"
+  ],
+  "contact": {
+    "homepage": "https://github.com/HyperPigeon",
+    "sources": "https://github.com/HyperPigeon/better-wandering-trader"
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/better_wandering_trader/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.hyper_pigeon.better_wandering_trader.BetterWanderingTraderMod"
+    ]
+  },
+  "mixins": [
+    "better_wandering_trader.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.15.x"
+  },
+  "suggests": {
+    "flamingo": "*"
+  }
+}
