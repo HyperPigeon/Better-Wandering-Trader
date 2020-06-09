@@ -1,0 +1,5 @@
+{
+  "text.autoconfig.better_wandering_trader.title": "Better Wandering Trader Config (Find the .json5 file to add custom trades)",
+  "text.autoconfig.better_wandering_trader.option.trades": "Trades",
+  "text.autoconfig.better_wandering_trader.option.trades.enable_user_added_traded": "Enable user added trades"
+}

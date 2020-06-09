@@ -20,6 +20,9 @@
   "entrypoints": {
     "main": [
       "net.hyper_pigeon.better_wandering_trader.BetterWanderingTraderMod"
+    ],
+    "modmenu": [
+      "net.hyper_pigeon.better_wandering_trader.ModMenuIntegration"
     ]
   },
   "mixins": [

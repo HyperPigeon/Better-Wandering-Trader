@@ -2,11 +2,15 @@ package net.hyper_pigeon.better_wandering_trader.mixin;
 
 import com.google.common.collect.ImmutableMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
+import net.hyper_pigeon.better_wandering_trader.BetterWanderingTraderConfig;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.village.TradeOffers;
 import org.spongepowered.asm.mixin.Final;
@@ -25,7 +29,7 @@ public class TraderOffersMixin {
     @Shadow
     public static final Int2ObjectMap<TradeOffers.Factory[]> WANDERING_TRADER_TRADES;
 
-    static class SellItemFactory implements TradeOffers.Factory {
+    public static class SellItemFactory implements TradeOffers.Factory {
         private final ItemStack sell;
         private final int price;
         private final int count;
@@ -117,5 +121,22 @@ public class TraderOffersMixin {
                         new TraderOffersMixin.SellItemFactory(Items.DIAMOND_PICKAXE, 16, 1, 2,1),
                         new TraderOffersMixin.SellItemFactory(Items.DIAMOND_SWORD, 16, 1, 2,1),
                         new TraderOffersMixin.SellItemFactory(Items.DIAMOND_AXE, 16, 1, 2,1)}));
+        BetterWanderingTraderConfig config = AutoConfig.getConfigHolder(BetterWanderingTraderConfig.class).getConfig();
+        if (config.trades.enable_user_added_traded) {
+            TradeOffers.Factory[] new_trades = new TradeOffers.Factory[config.invisibleTradeFactory.number_of_trades];
+            for (int i = 0; i <config.invisibleTradeFactory.array.length; i++ ) {
+                //Item item = Item.byRawId(config.invisibleTradeFactory.array[i].numeric_id);
+                Item item = Registry.ITEM.get(Identifier.tryParse(config.invisibleTradeFactory.array[i].identifier));
+                int price = config.invisibleTradeFactory.array[i].price;
+                int count = config.invisibleTradeFactory.array[i].count;
+                int max_uses = config.invisibleTradeFactory.array[i].maxUses;
+                int experience = config.invisibleTradeFactory.array[i].experience;
+                new_trades[i] = new TraderOffersMixin.SellItemFactory(item, price, count, max_uses,experience);
+            }
+
+            //TradeOffers.Factory[] final_trades = ArrayUtils.addAll(WANDERING_TRADER_TRADES.get(1),new_trades);
+            //WANDERING_TRADER_TRADES.replace(1,final_trades);
+            WANDERING_TRADER_TRADES.put(3,new_trades);
+        }
     }
 }

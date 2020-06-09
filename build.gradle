@@ -21,6 +21,14 @@ dependencies {
 
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
+	
+	modApi "me.shedaniel.cloth:config-2:2.14.1"
+	include "me.shedaniel.cloth:config-2:2:2.14.1"
+
+	modApi "me.sargunvohra.mcmods:autoconfig1u:2.0.1"
+	include "me.sargunvohra.mcmods:autoconfig1u:2.0.1"
+
+	modImplementation "io.github.prospector:modmenu:1.10.2+build.32"
 }
 
 processResources {
@@ -73,5 +81,6 @@ publishing {
 	repositories {
 		// uncomment to publish to the local maven
 		// mavenLocal()
+		jcenter()
 	}
 }
