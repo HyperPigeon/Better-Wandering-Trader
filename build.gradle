@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.2.7-SNAPSHOT'
+	id 'fabric-loom' version '0.4-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -12,23 +12,23 @@ group = project.maven_group
 
 dependencies {
 	//to change the versions see the gradle.properties file
-	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	minecraft "com.mojang:minecraft:1.16.1"
+	mappings "net.fabricmc:yarn:1.16.1+build.18:v2"
+	modImplementation "net.fabricmc:fabric-loader:0.8.8+build.202"
 
-	// Fabric API. This is technically optional, but you probably want it anyway.
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	//Fabric api
+	modImplementation "net.fabricmc.fabric-api:fabric-api:0.14.0+build.371-1.16"
 
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
 	
-	modApi "me.shedaniel.cloth:config-2:2.14.1"
-	include "me.shedaniel.cloth:config-2:2:2.14.1"
+	modApi "me.shedaniel.cloth:config-2:4.5.6"
+	include "me.shedaniel.cloth:config-2:4.5.6"
 
-	modApi "me.sargunvohra.mcmods:autoconfig1u:2.0.1"
-	include "me.sargunvohra.mcmods:autoconfig1u:2.0.1"
+	modApi "me.sargunvohra.mcmods:autoconfig1u:3.2.0-unstable"
+	include "me.sargunvohra.mcmods:autoconfig1u:3.2.0-unstable"
 
-	modImplementation "io.github.prospector:modmenu:1.10.2+build.32"
+	modImplementation "io.github.prospector:modmenu:1.12.2+build.17"
 }
 
 processResources {
