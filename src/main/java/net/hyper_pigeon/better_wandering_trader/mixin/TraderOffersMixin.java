@@ -2,8 +2,7 @@ package net.hyper_pigeon.better_wandering_trader.mixin;
 
 import com.google.common.collect.ImmutableMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
-import net.hyper_pigeon.better_wandering_trader.BetterWanderingTraderConfig;
+import net.hyper_pigeon.better_wandering_trader.BetterWanderingTraderMod;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
@@ -121,16 +120,16 @@ public class TraderOffersMixin {
                         new TraderOffersMixin.SellItemFactory(Items.DIAMOND_PICKAXE, 16, 1, 2,1),
                         new TraderOffersMixin.SellItemFactory(Items.DIAMOND_SWORD, 16, 1, 2,1),
                         new TraderOffersMixin.SellItemFactory(Items.DIAMOND_AXE, 16, 1, 2,1)}));
-        BetterWanderingTraderConfig config = AutoConfig.getConfigHolder(BetterWanderingTraderConfig.class).getConfig();
-        if (config.trades.enable_user_added_traded) {
-            TradeOffers.Factory[] new_trades = new TradeOffers.Factory[config.invisibleTradeFactory.number_of_trades];
-            for (int i = 0; i <config.invisibleTradeFactory.array.length; i++ ) {
+        ///BetterWanderingTraderConfig config = AutoConfig.getConfigHolder(BetterWanderingTraderConfig.class).getConfig();
+        if (BetterWanderingTraderMod.CONFIG.trades.enable_user_added_traded) {
+            TradeOffers.Factory[] new_trades = new TradeOffers.Factory[BetterWanderingTraderMod.CONFIG.invisibleTradeFactory.number_of_trades];
+            for (int i = 0; i <BetterWanderingTraderMod.CONFIG.invisibleTradeFactory.array.length; i++ ) {
                 //Item item = Item.byRawId(config.invisibleTradeFactory.array[i].numeric_id);
-                Item item = Registry.ITEM.get(Identifier.tryParse(config.invisibleTradeFactory.array[i].identifier));
-                int price = config.invisibleTradeFactory.array[i].price;
-                int count = config.invisibleTradeFactory.array[i].count;
-                int max_uses = config.invisibleTradeFactory.array[i].maxUses;
-                int experience = config.invisibleTradeFactory.array[i].experience;
+                Item item = Registry.ITEM.get(Identifier.tryParse(BetterWanderingTraderMod.CONFIG.invisibleTradeFactory.array[i].identifier));
+                int price = BetterWanderingTraderMod.CONFIG.invisibleTradeFactory.array[i].price;
+                int count = BetterWanderingTraderMod.CONFIG.invisibleTradeFactory.array[i].count;
+                int max_uses = BetterWanderingTraderMod.CONFIG.invisibleTradeFactory.array[i].maxUses;
+                int experience = BetterWanderingTraderMod.CONFIG.invisibleTradeFactory.array[i].experience;
                 new_trades[i] = new TraderOffersMixin.SellItemFactory(item, price, count, max_uses,experience);
             }
 
