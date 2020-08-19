@@ -17,16 +17,13 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(WanderingTraderEntity.class)
-public class WanderingTraderEntityMixin extends AbstractTraderEntity {
+public abstract class WanderingTraderEntityMixin extends AbstractTraderEntity {
 
     @Shadow
     public native void fillRecipes();
 
     @Shadow
     public native void afterUsing(TradeOffer offer);
-
-    @Shadow
-    public native PassiveEntity createChild(PassiveEntity mate);
 
 
     public WanderingTraderEntityMixin(EntityType<? extends AbstractTraderEntity> entityType, World world) {
