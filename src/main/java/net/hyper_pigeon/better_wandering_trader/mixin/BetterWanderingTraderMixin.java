@@ -10,6 +10,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class BetterWanderingTraderMixin {
 	@Inject(at = @At("HEAD"), method = "init()V")
 	private void init(CallbackInfo info) {
-		System.out.println("This line is printed by BetterWanderingTrader mixin!");
+
 	}
 }
