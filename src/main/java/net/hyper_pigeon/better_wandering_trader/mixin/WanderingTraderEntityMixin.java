@@ -3,12 +3,11 @@ package net.hyper_pigeon.better_wandering_trader.mixin;
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import net.hyper_pigeon.better_wandering_trader.BetterWanderingTraderConfig;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.passive.AbstractTraderEntity;
-import net.minecraft.entity.passive.PassiveEntity;
+import net.minecraft.entity.passive.MerchantEntity;
 import net.minecraft.entity.passive.WanderingTraderEntity;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.village.TradeOffers;
-import net.minecraft.village.TraderOfferList;
+import net.minecraft.village.TradeOfferList;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -17,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(WanderingTraderEntity.class)
-public abstract class WanderingTraderEntityMixin extends AbstractTraderEntity {
+public abstract class WanderingTraderEntityMixin extends MerchantEntity {
 
     @Shadow
     public native void fillRecipes();
@@ -26,7 +25,7 @@ public abstract class WanderingTraderEntityMixin extends AbstractTraderEntity {
     public native void afterUsing(TradeOffer offer);
 
 
-    public WanderingTraderEntityMixin(EntityType<? extends AbstractTraderEntity> entityType, World world) {
+    public WanderingTraderEntityMixin(EntityType<? extends MerchantEntity> entityType, World world) {
         super(entityType, world);
     }
 
@@ -38,12 +37,12 @@ public abstract class WanderingTraderEntityMixin extends AbstractTraderEntity {
             TradeOffers.Factory[] factorys3 = TradeOffers.WANDERING_TRADER_TRADES.get(3);
             if (factorys3 != null) {
                 if (this.getOffers() != null) {
-                    TraderOfferList traderOfferList = this.getOffers();
+                    TradeOfferList tradeOfferList = this.getOffers();
                     //System.out.println("CHECK: " + traderOfferList);
                     //System.out.println("CHECK2: " + factorys3);
                     //System.out.println("CHECK3: " + factorys3[0]);
                     //System.out.println("CHECK2: " + factorys3[0].toString());
-                    this.fillRecipesFromPool(traderOfferList, factorys3, config.invisibleTradeFactory.trades_to_choose);
+                    this.fillRecipesFromPool(tradeOfferList, factorys3, config.invisibleTradeFactory.trades_to_choose);
                 }
             }
         }
