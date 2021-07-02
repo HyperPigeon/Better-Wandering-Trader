@@ -1,6 +1,7 @@
 package net.hyper_pigeon.better_wandering_trader.mixin;
 
-import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
+
+import me.shedaniel.autoconfig.AutoConfig;
 import net.hyper_pigeon.better_wandering_trader.BetterWanderingTraderConfig;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.MerchantEntity;
