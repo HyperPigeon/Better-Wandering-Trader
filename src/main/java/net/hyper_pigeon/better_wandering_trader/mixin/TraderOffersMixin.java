@@ -9,6 +9,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.village.TradeOffers;
@@ -16,8 +17,6 @@ import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Mutable;
 import org.spongepowered.asm.mixin.Shadow;
-
-import java.util.Random;
 
 
 @Mixin(TradeOffers.class)
@@ -73,11 +72,19 @@ public class TraderOffersMixin {
                 new TraderOffersMixin.SellItemFactory(Items.GOLDEN_APPLE, 6, 1, 12,1),
                 new TraderOffersMixin.SellItemFactory(Items.FIREWORK_ROCKET, 2, 1, 64,1),
                 new TraderOffersMixin.SellItemFactory(Items.ACACIA_SAPLING, 1, 1, 16,1),
-                new TraderOffersMixin.SellItemFactory(Items.DARK_OAK_SAPLING, 6, 1, 16,1),
-                new TraderOffersMixin.SellItemFactory(Items.NAUTILUS_SHELL, 5, 1, 10,1),
+                new TraderOffersMixin.SellItemFactory(Items.DARK_OAK_SAPLING, 5, 1, 16,1),
+                new TraderOffersMixin.SellItemFactory(Items.JUNGLE_SAPLING, 5, 1, 16, 1),
+                new TraderOffersMixin.SellItemFactory(Items.MANGROVE_PROPAGULE, 5, 1, 16, 1),
+                new TraderOffersMixin.SellItemFactory(Items.BLUE_ORCHID, 1, 1, 16, 1),
+                new TraderOffersMixin.SellItemFactory(Items.ALLIUM, 1, 1, 24, 1),
+                new TraderOffersMixin.SellItemFactory(Items.LILY_OF_THE_VALLEY, 1, 1, 14, 1),
+                new TraderOffersMixin.SellItemFactory(Items.SMALL_DRIPLEAF, 1, 2, 12, 1),
+                new TraderOffersMixin.SellItemFactory(Items.BROWN_MUSHROOM, 1, 1, 32, 1),
+                new TraderOffersMixin.SellItemFactory(Items.RED_MUSHROOM, 1, 1, 32, 1),
                 new TraderOffersMixin.SellItemFactory(Items.PUMPKIN_SEEDS, 1, 1, 16,1),
                 new TraderOffersMixin.SellItemFactory(Items.MELON_SEEDS, 1, 1, 16,1),
                 new TraderOffersMixin.SellItemFactory(Items.SLIME_BALL, 2, 1, 25,1),
+                new TraderOffersMixin.SellItemFactory(Items.GLOWSTONE, 2, 1, 25, 1),
                 new TraderOffersMixin.SellItemFactory(Items.HONEY_BOTTLE, 3, 1, 25,1),
                 new TraderOffersMixin.SellItemFactory(Items.HAY_BLOCK, 1, 1, 64,1),
                 new TraderOffersMixin.SellItemFactory(Items.ZOMBIE_HEAD, 8, 1, 1,1),
@@ -86,7 +93,10 @@ public class TraderOffersMixin {
                 new TraderOffersMixin.SellItemFactory(Items.BONE_BLOCK, 2, 1, 20,1),
                 new TraderOffersMixin.SellItemFactory(Items.ENDER_PEARL, 6, 1, 16,1),
                 new TraderOffersMixin.SellItemFactory(Items.GUNPOWDER, 1, 1, 32,1),
+                new TraderOffersMixin.SellItemFactory(Items.NAUTILUS_SHELL, 5, 1, 10,1),
                 new TraderOffersMixin.SellItemFactory(Items.SEA_PICKLE, 2, 1, 12,1),
+                new TraderOffersMixin.SellItemFactory(Items.LARGE_FERN, 1, 1, 12, 1),
+                new TraderOffersMixin.SellItemFactory(Items.MOSS_BLOCK, 1, 2, 32, 1),
                 new TraderOffersMixin.SellItemFactory(Items.PODZOL, 3, 1, 32,1),
                 new TraderOffersMixin.SellItemFactory(Items.MYCELIUM, 3, 1, 32,1),
                 new TraderOffersMixin.SellItemFactory(Items.BLAZE_ROD, 5, 1, 12,1),
@@ -102,6 +112,7 @@ public class TraderOffersMixin {
                 new TraderOffersMixin.SellItemFactory(Items.TROPICAL_FISH_BUCKET, 4, 1, 8,1),
                 new TraderOffersMixin.SellItemFactory(Items.SWEET_BERRIES, 2, 1, 16,1),
                 new TraderOffersMixin.SellItemFactory(Items.BAMBOO, 2, 1, 32,1),
+                new TraderOffersMixin.SellItemFactory(Items.SUGAR_CANE, 1, 1, 32, 1),
                 new TraderOffersMixin.SellItemFactory(Items.TERRACOTTA, 1, 1, 64,1),
                 new TraderOffersMixin.SellItemFactory(Items.PRISMARINE_SHARD, 4, 1, 28,1)}, 2,
                 new TradeOffers.Factory[]{new TraderOffersMixin.SellItemFactory(Items.ENCHANTED_GOLDEN_APPLE, 56, 1, 1,1),
@@ -109,9 +120,10 @@ public class TraderOffersMixin {
                         new TraderOffersMixin.SellItemFactory(Items.WITHER_SKELETON_SKULL, 64, 1, 1,1),
                         new TraderOffersMixin.SellItemFactory(Items.TRIDENT, 25, 1, 2,1),
                         new TraderOffersMixin.SellItemFactory(Items.GHAST_TEAR, 12, 1, 4,1),
+                        new TraderOffersMixin.SellItemFactory(Items.WITHER_ROSE, 12, 1, 4,1),
                         new TraderOffersMixin.SellItemFactory(Items.HEART_OF_THE_SEA, 56, 1, 2,1),
                         new TraderOffersMixin.SellItemFactory(Items.DRAGON_BREATH, 32, 1, 3,1),
-                        new TraderOffersMixin.SellItemFactory(Items.SHULKER_SHELL, 16, 1, 3,1),
+                        new TraderOffersMixin.SellItemFactory(Items.SHULKER_SHELL, 16, 1, 4,1),
                         new TraderOffersMixin.SellItemFactory(Items.ENDER_EYE, 16, 1, 3,1),
                         new TraderOffersMixin.SellItemFactory(Items.DIAMOND_HELMET, 16, 1, 2,1),
                         new TraderOffersMixin.SellItemFactory(Items.DIAMOND_CHESTPLATE, 16, 1, 2,1),
